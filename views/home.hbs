@@ -1,5 +1,9 @@
 <div>
-    <form action="/artist-search" method="GET">
+    <form action="/artist-search" method="GET"> 
+    {{!-- Action es necesario para que la info se mande a esa ruta dentro de la variable
+    req.query.artistName, de lo contrario esa info solo será accesible como artistName pero
+    solo podrá acceder a ella la ruta "/", donde estás por defecto ahora mismo--}}
+    
         <input type="text" name="artistName" placeholder="Introduce an artist name">
         <button>Search for an Artist</button>
     </form>
