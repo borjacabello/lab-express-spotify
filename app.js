@@ -51,16 +51,30 @@ app.get("/artist-search", (req, res, next) => {
   .then((response) => {
     //console.log(response.body.artists.items[0].images)  // Object of properties
 
-    let imagesArr = [];
     let artistList = response.body.artists.items  // Array of objects
 
-    artistList.forEach(eachArtist => {
-      imagesArr.push(eachArtist.images[0])
-    })
-
     res.render("artist-search-results.hbs", {
-      artistList: artistList,
-      imagesList: imagesArr
+      artistList: artistList
+    })
+  })
+  .catch(err => next(err))
+
+})
+
+// Albums route
+app.get("/albums/:artistId", (req, res, next) => {
+
+  const {artistId} = req.params
+
+  spotifyApi
+  .getArtistAlbums(artistId)
+  .then(data => {
+    //console.log(data.body.items[0].images);
+
+    const albumsList = data.body.items;
+
+    res.render("albums.hbs", {
+      albumsList
     })
   })
   .catch(err => next(err))

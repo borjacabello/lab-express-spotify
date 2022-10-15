@@ -1,0 +1,9 @@
+<div class = "row">
+    {{#each albumsList}}
+    <div class = "col-md-4">
+        <img src="{{this.images.0.url}}" alt="album" width="200px">
+        <h2>{{this.name}}</h2>
+        <a href="">View Tracks</a>
+    </div>
+    {{/each}}
+</div>
